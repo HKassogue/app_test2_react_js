@@ -22,7 +22,7 @@ class About extends Component {
     render() {
         return (
             <div>
-                <div className="card">
+                <div className="card m-2">
                     <div className="card-header">
                         <strong>
                             <label>{this.state.title}</label>
@@ -40,7 +40,23 @@ class About extends Component {
                         </div>
                     </div>
                 </div>
-                
+                <div className="card m-2">
+                    <div className="card-header">Skills</div>
+                    <div className="card-body">
+                        <table className="table">
+                            <tr>
+                                <th>ID</th> <th>Skill</th>
+                            </tr>
+                            {
+                                this.state.skills.map((value, index) =>
+                                <tr>
+                                    <td>{value.id}</td> <td>{value.skill}</td>
+                                </tr>
+                                )
+                            }
+                        </table>
+                    </div>
+                </div>
             </div>
         )
     }
