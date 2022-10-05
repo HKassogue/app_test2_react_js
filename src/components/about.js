@@ -99,7 +99,7 @@ class About extends Component {
                             </tr>
                             {
                                 this.state.skills.map((value, index) =>
-                                <tr>
+                                <tr key={value.id}>
                                     <td>{value.id}</td> <td>{value.skill}</td>
                                     <td>
                                         <button className="btn btn-danger" onClick={() => this.onDelete(value)}>X</button>

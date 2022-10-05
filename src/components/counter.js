@@ -35,7 +35,7 @@ class Counter extends Component {
                 <div className="card-body">
                     {
                         this.state.list.map((value,index) => 
-                            <span>
+                            <span key={index}>
                                 {index}
                                 <img width={100} src={this.props.image?this.props.image:'images/profile.png'}/>
                             </span>
