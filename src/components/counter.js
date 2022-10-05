@@ -11,7 +11,9 @@ class Counter extends Component {
     }
 
     compute = (op) => {
-        let c = this.state.counter + 1;
+        let sign = op === '+' ? 1 : - 1;
+        if (this.state.counter==1 && op==='-') sign = 0;
+        let c = this.state.counter + sign;
         this.setState({
             counter: c,
             list: new Array(c).fill(0)
@@ -28,12 +30,15 @@ class Counter extends Component {
                 </div>
                 <div className="align-self-end">
                     <button onClick={()=>this.compute('+')} className="btn btn-primary m-2">+</button>
-                    <button onClick={()=>this.compute('+')} className="btn btn-primary m-2">-</button>
+                    <button onClick={()=>this.compute('-')} className="btn btn-primary m-2">-</button>
                 </div>
                 <div className="card-body">
                     {
                         this.state.list.map((value,index) => 
-                            <img width={100} src={this.props.image}/>
+                            <span>
+                                {index}
+                                <img width={100} src={this.props.image}/>
+                            </span>
                         )
                     }
                 </div>
