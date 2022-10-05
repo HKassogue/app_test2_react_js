@@ -5,6 +5,7 @@ class About extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            skillValue: "",
             title: "Mon CV",
             contact: {
                 name: "Toto Titi", 
@@ -18,6 +19,40 @@ class About extends Component {
             ]
         }
     }
+
+    addSkill = (event) => {
+        event.preventDefault();
+        let skill
+        if(this.state.skills.length>0) {
+            skill = {
+                id: [...this.state.skills].pop().id + 1,
+                skill: this.state.skillValue
+            }
+        } else {
+            skill = {
+                id: 1,
+                skill: this.state.skillValue
+            }
+        }
+        this.setState({
+            skills: [...this.state.skills, skill]
+        })
+    };
+
+    setSkill = (event) => {
+        this.setState({
+            skillValue: event.target.value
+        })
+    };
+
+    onDelete = (skill) => {
+        let index = this.state.skills.indexOf(skill);
+        let listSkills = [...this.state.skills];
+        listSkills.splice(index, 1);
+        this.setState({
+            skills: listSkills
+        });
+    };
 
     render() {
         return (
@@ -46,10 +81,15 @@ class About extends Component {
                         <form onSubmit={this.addSkill}>
                             <div className="row mb-2">
                                 <div className="col">
-                                    <input type="text" name="skill" placeholder="New skill" className="p-1"/>
+                                    <input type="text" 
+                                    name="skill" 
+                                    value={this.state.skillValue}
+                                    onChange={this.setSkill}
+                                    placeholder="New skill" 
+                                    className="p-1"/>
                                 </div>
                                 <div className="col col-auto">
-                                    <button className="btn btn-primary">Add</button>
+                                    <button className="btn btn-primary" type="submit">Add</button>
                                 </div>
                             </div>
                         </form>
@@ -61,6 +101,9 @@ class About extends Component {
                                 this.state.skills.map((value, index) =>
                                 <tr>
                                     <td>{value.id}</td> <td>{value.skill}</td>
+                                    <td>
+                                        <button className="btn btn-danger" onClick={() => this.onDelete(value)}>X</button>
+                                    </td>
                                 </tr>
                                 )
                             }
