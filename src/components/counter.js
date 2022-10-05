@@ -25,7 +25,7 @@ class Counter extends Component {
             <div className="card m-3">
                 <div className="card-header">
                     <strong>
-                        {this.props.title} : {this.state.counter}
+                        {this.props.title?this.props.title:'Default title'} : {this.state.counter}
                     </strong>
                 </div>
                 <div className="align-self-end">
@@ -37,7 +37,7 @@ class Counter extends Component {
                         this.state.list.map((value,index) => 
                             <span>
                                 {index}
-                                <img width={100} src={this.props.image}/>
+                                <img width={100} src={this.props.image?this.props.image:'images/profile.png'}/>
                             </span>
                         )
                     }
