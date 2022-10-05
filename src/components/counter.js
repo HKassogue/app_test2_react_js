@@ -12,7 +12,7 @@ class Counter extends Component {
 
     compute = (op) => {
         let sign = op === '+' ? 1 : - 1;
-        if (this.state.counter==1 && op==='-') sign = 0;
+        if (this.state.counter===1 && op==='-') sign = 0;
         let c = this.state.counter + sign;
         this.setState({
             counter: c,
@@ -37,7 +37,7 @@ class Counter extends Component {
                         this.state.list.map((value,index) => 
                             <span key={index}>
                                 {index}
-                                <img width={100} src={this.props.image?this.props.image:'images/profile.png'}/>
+                                <img width={100} src={this.props.image?this.props.image:'images/profile.png'} alt="Profile"/>
                             </span>
                         )
                     }
