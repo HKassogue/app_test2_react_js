@@ -43,6 +43,16 @@ class About extends Component {
                 <div className="card m-2">
                     <div className="card-header">Skills</div>
                     <div className="card-body">
+                        <form onSubmit={this.addSkill}>
+                            <div className="row mb-2">
+                                <div className="col">
+                                    <input type="text" name="skill" placeholder="New skill" className="p-1"/>
+                                </div>
+                                <div className="col col-auto">
+                                    <button className="btn btn-primary">Add</button>
+                                </div>
+                            </div>
+                        </form>
                         <table className="table">
                             <tr>
                                 <th>ID</th> <th>Skill</th>
