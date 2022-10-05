@@ -96,20 +96,22 @@ class About extends Component {
                         <table className="table">
                             <thead>
                                 <tr>
-                                    <th>ID</th> <th>Skill</th>
+                                    <th>ID</th>
+                                    <th>Skill</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {
-                                    this.state.skills.map((value, index) =>
-                                    <tr key={value.id}>
-                                        <td>{value.id}</td> <td>{value.skill}</td>
-                                        <td>
-                                            <button className="btn btn-danger" onClick={() => this.onDelete(value)}>X</button>
-                                        </td>
-                                    </tr>
-                                    )
-                                }
+                            {
+                                this.state.skills.map((value, index) =>
+                                <tr key={value.id}>
+                                    <td>{value.id}</td>
+                                    <td>{value.skill}</td>
+                                    <td>
+                                        <button className="btn btn-danger" onClick={() => this.onDelete(value)}>X</button>
+                                    </td>
+                                </tr>
+                                )
+                            }
                             </tbody>
                         </table>
                     </div>
