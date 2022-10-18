@@ -30,8 +30,21 @@ class Gallery extends Component {
 
     render() {
         return (
-            <div>
-                <h3>Gallery...</h3>
+            <div className="row">
+                {
+                    this.state.hits.map(hit =>
+                        <div className="col-md-4">
+                            <div className="card">
+                                <div className="card-header">
+                                    {hit.tags} | {hit.webformatWidth} x {hit.webformatHeight}
+                                </div>
+                                <div className="card-body">
+                                    <img className="card-img"  height={200} src={hit.webformatURL} />
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }
             </div>
         );
     }
