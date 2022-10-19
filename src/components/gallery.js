@@ -17,7 +17,7 @@ class Gallery extends Component {
     }
 
     getHits() {
-        let url = "https://pixabay.com/api/?key=5832566-81dc7429a63c86e3b707d0429&q=paris";
+        let url = "https://pixabay.com/api/?key=5832566-81dc7429a63c86e3b707d0429&q=" + this.state.currentKeyword;
         axios.get(url).then((resp) => {
             console.log(resp);
             this.setState({
@@ -34,10 +34,15 @@ class Gallery extends Component {
         });
     }
 
+    search = (event) => {
+        event.preventDefault();
+        this.getHits();
+    } 
+
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.search}>
                     <div className="row m-1 p-1">
                         {//<div>{this.state.currentKeyword}</div>
                         }
@@ -48,7 +53,7 @@ class Gallery extends Component {
                                 className="form-control" />
                         </div>
                         <div className="col-auto">
-                            <button className="btn btn-success">Chercher</button>
+                            <button className="btn btn-success" type="submit">Chercher</button>
                         </div>
                     </div>
                 </form>
