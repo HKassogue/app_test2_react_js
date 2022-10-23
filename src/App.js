@@ -3,6 +3,7 @@ import Counter from './components/counter';
 import About from './components/about';
 import {Route, Routes, Link, BrowserRouter as Router } from 'react-router-dom'
 import Gallery from './components/gallery';
+import Home from './components/home';
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
 
       <div className='container'>
         <Routes>
-          <Route path="/home"> </Route>
+          <Route path="/home" element={<Home/>}> </Route>
           <Route path="/counter" element={<Counter/>}> </Route>
           <Route path="/about" element={<About/>}> </Route>
           <Route path="/gallery" element={<Gallery/>}> </Route>
