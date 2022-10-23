@@ -80,7 +80,7 @@ class Gallery extends Component {
                 <div className="row">
                     {
                         this.state.hits.map(hit =>
-                            <div className="col-md-4">
+                            <div className="col-md-4" key={hit.id}>
                                 <div className="card">
                                     <div className="card-header">
                                         {hit.tags} | {hit.webformatWidth} x {hit.webformatHeight}
@@ -97,7 +97,7 @@ class Gallery extends Component {
                     <ul className="nav nav-pills">
                         {
                             this.state.pages.map((value, index) =>
-                                <li>
+                                <li key={index}>
                                     <a className={this.state.currentPage===index+1 ? 'btn btn-primary' : "btn"} onClick={()=>this.gotoPage(index+1)}>{index+1}</a>
                                 </li>
                             )
