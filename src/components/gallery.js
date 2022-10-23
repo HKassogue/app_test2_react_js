@@ -86,7 +86,7 @@ class Gallery extends Component {
                                         {hit.tags} | {hit.webformatWidth} x {hit.webformatHeight}
                                     </div>
                                     <div className="card-body">
-                                        <img className="card-img"  height={200} src={hit.webformatURL} />
+                                        <img className="card-img"  height={200} src={hit.webformatURL} alt={hit.tags} />
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@ class Gallery extends Component {
                         {
                             this.state.pages.map((value, index) =>
                                 <li key={index}>
-                                    <a className={this.state.currentPage===index+1 ? 'btn btn-primary' : "btn"} onClick={()=>this.gotoPage(index+1)}>{index+1}</a>
+                                    <button className={this.state.currentPage===index+1 ? 'btn btn-primary' : "btn btn-link"} onClick={()=>this.gotoPage(index+1)}>{index+1}</button>
                                 </li>
                             )
                         }
