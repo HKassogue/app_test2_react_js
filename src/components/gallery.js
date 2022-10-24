@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
+import HitItem from "./hititem";
 
 class Gallery extends Component {
     constructor(props) {
@@ -31,7 +32,6 @@ class Gallery extends Component {
                 totalPages: totalPages,
                 pages: new Array(totalPages).fill(0)
             });
-            console.log(this.state.hits);
         }).catch((err => {
             console.log(err);
         }))
@@ -80,16 +80,7 @@ class Gallery extends Component {
                 <div className="row">
                     {
                         this.state.hits.map(hit =>
-                            <div className="col-md-4" key={hit.id}>
-                                <div className="card">
-                                    <div className="card-header">
-                                        {hit.tags} | {hit.webformatWidth} x {hit.webformatHeight}
-                                    </div>
-                                    <div className="card-body">
-                                        <img className="card-img"  height={200} src={hit.webformatURL} alt={hit.tags} />
-                                    </div>
-                                </div>
-                            </div>
+                            <HitItem hit={hit}/>
                         )
                     }
                 </div>
