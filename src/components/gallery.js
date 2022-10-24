@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 import HitItem from "./hititem";
+import SearcHitForm from "./searchhitform";
 
 class Gallery extends Component {
     constructor(props) {
@@ -19,8 +20,8 @@ class Gallery extends Component {
     //     this.getHits();
     // }
 
-    getHits() {
-        let url = "https://pixabay.com/api/?key=5832566-81dc7429a63c86e3b707d0429&q=" + this.state.currentKeyword
+    getHits(keyword) {
+        let url = "https://pixabay.com/api/?key=5832566-81dc7429a63c86e3b707d0429&q=" + keyword
         + "&page=" + this.state.currentPage
         + "&per_page=" + this.state.pageSize;
         axios.get(url).then((resp) => {
@@ -30,53 +31,30 @@ class Gallery extends Component {
             this.setState({
                 hits: resp.data.hits,
                 totalPages: totalPages,
-                pages: new Array(totalPages).fill(0)
+                pages: new Array(totalPages).fill(0),
+                currentKeyword: keyword
             });
         }).catch((err => {
             console.log(err);
         }))
     }
 
-    setKeyword = (event) => {
-        this.setState({
-            currentKeyword: event.target.value
-        });
-    }
-
-    search = (event) => {
-        event.preventDefault();
-        this.getHits();
+    search = (keyword) => {
+        this.getHits(keyword);
     } 
 
     gotoPage = (page) => {
         this.setState({
             currentPage: page
         }, () => {
-            this.getHits();
+            this.getHits(this.state.currentKeyword);
         });
-        //console.log(this.state.currentPage);
-        //console.log(page);
     }
 
     render() {
         return (
             <div>
-                <form onSubmit={this.search}>
-                    <div className="row m-1 p-1">
-                        {//<div>{this.state.currentKeyword}</div>
-                        }
-                        <div className="col">
-                            <input type="text" 
-                                placeholder="keyword"
-                                value={this.state.currentKeyword}
-                                onChange={this.setKeyword}
-                                className="form-control" />
-                        </div>
-                        <div className="col-auto">
-                            <button className="btn btn-success" type="submit">Chercher</button>
-                        </div>
-                    </div>
-                </form>
+                <SearcHitForm onSearch={this.search}/>
                 <div className="row">
                     {
                         this.state.hits.map(hit =>
