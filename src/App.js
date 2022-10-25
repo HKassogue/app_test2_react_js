@@ -4,6 +4,7 @@ import About from './components/about';
 import {Route, Routes, Link, BrowserRouter as Router } from 'react-router-dom'
 import Gallery from './components/gallery';
 import Home from './components/home';
+import HitDetails from './components/hitdetails';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/counter" element={<Counter/>}> </Route>
           <Route path="/about" element={<About/>}> </Route>
           <Route path="/gallery" element={<Gallery/>}> </Route>
+          <Route path="/hitDetails/:id" element={<HitDetails/>}> </Route>
         </Routes>
       </div>
     </Router>
