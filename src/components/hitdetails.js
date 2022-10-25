@@ -35,7 +35,7 @@ class HitDetails extends Component {
     render() {
         if(this.state.hit != null) 
             return (
-                <HitItem hit={this.state.hit} />             
+                <HitItem hit={this.state.hit} details={true}/>             
             );
         else
             return (
