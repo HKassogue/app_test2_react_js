@@ -3,6 +3,10 @@ import axios from "axios";
 import { useParams } from 'react-router';
 import HitItem from './hititem';
 
+function withParams(Component) {
+    return props => <Component {...props} params={useParams()} />;
+}
+
 class HitDetails extends Component {
 
     constructor(props) {
@@ -24,7 +28,7 @@ class HitDetails extends Component {
     }
 
     componentDidMount() {
-        const { id } = useParams();
+        const { id } = this.props.params;
         this.getHit(id);
     }
 
@@ -42,4 +46,4 @@ class HitDetails extends Component {
     }
 }
 
-export default HitDetails;
+export default withParams(HitDetails);
