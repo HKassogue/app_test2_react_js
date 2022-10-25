@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import { useParams } from 'react-router';
 import HitItem from './hititem';
 
 class HitDetails extends Component {
@@ -23,7 +24,8 @@ class HitDetails extends Component {
     }
 
     componentDidMount() {
-        //this.getHit(this.props.match.params.id);
+        const { id } = useParams();
+        this.getHit(id);
     }
 
     render() {
