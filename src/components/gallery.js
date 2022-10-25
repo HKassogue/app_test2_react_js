@@ -58,7 +58,7 @@ class Gallery extends Component {
                 <div className="row">
                     {
                         this.state.hits.map(hit =>
-                            <HitItem hit={hit}/>
+                            <HitItem hit={hit} details={false}/>
                         )
                     }
                 </div>
